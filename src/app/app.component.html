@@ -42,15 +42,25 @@
                nz-icon
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
-            {{group.name}}
+            Group: {{group.name}} ({{group.students.length}}), Teacher: {{group.teacher.name}}
         </span>
       </div>
     </nz-header>
     <nz-content>
       <div class="inner-content">
-        <ul>
-          <li *ngFor="let stud of group.students">{{stud.name}}</li>
-        </ul>
+        <div *ngFor="let stud of group.students" style="background: #ECECEC;padding:30px;">
+          <nz-card style="width:300px;" [nzBordered]="false" [nzTitle]="stud.name" [nzExtra]="extraTemplate">
+            <p>Age: {{stud.age}}</p> 
+            <p>Grades:</p>
+            <div ng style="width: 170px;">
+              <nz-progress *ngFor="let grade of stud.grades" [nzPercent]="grade" nzSize="small"></nz-progress>
+     
+            </div>
+          </nz-card>
+        </div>
+        <ng-template #extraTemplate>
+          <a>More</a>
+        </ng-template>        
         <router-outlet></router-outlet>
       </div>
     </nz-content>
