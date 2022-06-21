@@ -11,7 +11,13 @@ export class AppComponent {
   isCollapsed = false;
 
   public group: Group;
-
+  public list = [
+    1,
+    2,
+    3,
+    4,
+    5,
+  ]
   public ngOnInit() {
     this.group = new Group();
     this.group.name = "SEP-201"

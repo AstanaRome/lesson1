@@ -14,12 +14,15 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { MainMenuDirective } from './main-menu.directive';
+
 
 registerLocaleData(ru);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainMenuDirective
   ],
   imports: [
     BrowserModule,
