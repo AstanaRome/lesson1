@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 
 @Directive({
@@ -6,15 +6,27 @@ import { Directive, HostListener, ElementRef } from '@angular/core';
 })
 export class MainMenuDirective {
 
-  constructor( private el: ElementRef) { 
-   
+  constructor(private el: ElementRef) {
+
+  }
+
+  @Input()
+  public appMainMenu: string = 'red';
+  @HostListener('mouseenter')
+
+  public enter() {
+    let ul = this.el.nativeElement.querySelector("ul");
+    ul.style.display = 'block'
+    ul.style.color = this.appMainMenu;
   }
 
 
-  @HostListener("click") 
-
-  mouseenter() {
-    console.log('mouseenter')
+  @HostListener('mouseleave')
+  public leave() {
+    let ul = this.el.nativeElement.querySelector("ul");
+    ul.style.display = 'none'
+    ul.style.color = this.appMainMenu;
   }
+
 
 }
